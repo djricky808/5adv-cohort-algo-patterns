@@ -24,17 +24,30 @@ function removeDuplicates(nums) {
   return nums;
 }
 // Test Cases
-console.log(removeDuplicates([1, 1, 2, 3, 3, 4])); // Normal Case: [1, 2, 3, 4]
-console.log(removeDuplicates([])); // Edge Case: Empty array
+// console.log(removeDuplicates([1, 1, 2, 3, 3, 4])); // Normal Case: [1, 2, 3, 4]
+// console.log(removeDuplicates([])); // Edge Case: Empty array
 
 // 2. Two Sum II - Input Array is Sorted (Easy)
 // Given a sorted array and a target number, return indices of the two numbers that add up to target.
 function twoSumSorted(nums, target) {
   // Implement two pointers logic
+  let left = 0;
+  let right = nums.length - 1;
+  while (left < right) {
+    let sum = nums[left] + nums[right];
+    if (sum === target) {
+      return [left, right];
+    } else if (sum > target) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+  return [];
 }
 // Test Cases
-// console.log(twoSumSorted([2, 7, 11, 15], 9)); // Normal Case: [0, 1]
-// console.log(twoSumSorted([1, 2, 3, 4], 10)); // Edge Case: No valid pairs
+console.log(twoSumSorted([2, 7, 11, 15], 9)); // Normal Case: [0, 1]
+console.log(twoSumSorted([1, 2, 3, 4], 10)); // Edge Case: No valid pairs
 
 // 3. Container With Most Water (Medium)
 // Given an array representing heights of vertical lines, find two lines that together with the x-axis form a container that holds the most water.
