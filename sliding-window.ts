@@ -5,6 +5,18 @@ function maxSumSubarray(arr, k) {
   if (k > arr.length) {
     return arr.reduce((a, b) => a + b);
   }
+  let maxSum = 0;
+  let max: number[] = [];
+  let left = 0;
+  for (let right = k; right < arr.length; right++) {
+    let maxSumSubArr = arr.slice(left, right);
+    let evalSum = maxSumSubArr.reduce((a, b) => a + b);
+    if (evalSum > maxSum) {
+      maxSum = evalSum;
+    }
+    left++;
+  }
+  return maxSum;
 }
 // Test Cases
 console.log(maxSumSubarray([2, 1, 5, 1, 3, 2], 3)); // Normal Case
