@@ -36,7 +36,8 @@ function findContentChildren(g, s) {
 // Test Cases
 // console.log(findContentChildren([1, 2, 3], [1, 1])); // 1 Normal Case
 // console.log(findContentChildren([], [1, 2, 3])); // Edge Case: No children
-console.log(findContentChildren([1, 1, 1, 2, 3], [1, 3, 3, 3])); // 4 Normal Case
+//console.log(findContentChildren([1, 1, 1, 2, 3], [1, 3, 3, 3])); // 4 Normal Case
+console.log(findContentChildren([1, 1, 1, 2, 3], [])); // Edge Case: No Cookies
 
 // 2. Jump Game (Medium)
 // Problem Prompt:
