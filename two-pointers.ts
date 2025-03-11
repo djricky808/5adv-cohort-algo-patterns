@@ -46,8 +46,8 @@ function twoSumSorted(nums, target) {
   return [];
 }
 // Test Cases
-console.log(twoSumSorted([2, 7, 11, 15], 9)); // Normal Case: [0, 1]
-console.log(twoSumSorted([1, 2, 3, 4], 10)); // Edge Case: No valid pairs
+// console.log(twoSumSorted([2, 7, 11, 15], 9)); // Normal Case: [0, 1]
+// console.log(twoSumSorted([1, 2, 3, 4], 10)); // Edge Case: No valid pairs
 
 // 3. Container With Most Water (Medium)
 // Given an array representing heights of vertical lines, find two lines that together with the x-axis form a container that holds the most water.

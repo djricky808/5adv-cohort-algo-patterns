@@ -38,16 +38,32 @@ function permute(nums) {
   return permutations;
 }
 // // Test Cases
-console.log(permute([1, 2, 3])); // Normal Case
+// console.log(permute([1, 2, 3])); // Normal Case
 // console.log(permute([])); // Edge Case: Empty array
 
 // 3. Combination Sum (Medium)
 // Given an array of integers and a target, return all unique combinations where numbers sum to target.
 function combinationSum(candidates, target) {
   // Implement backtracking logic
+  let combinations: number[][] = [];
+  function comboSum(index, candidates, target, combo) {
+    let sum = combo.length > 0 ? combo.reduce((a, b) => a + b) : 0;
+    if (sum === target) {
+      combinations.push(...combo);
+      return;
+    } else if (sum > target) {
+      return;
+    }
+    for (let i = index; i < candidates.length; i++) {
+      comboSum(index + 1, candidates, target, [...combo, candidates[i]]);
+    }
+  }
+  comboSum(0, candidates, target, combinations);
+  return combinations;
 }
 // // Test Cases
-// console.log(combinationSum([2, 3, 6, 7], 7)); // Normal Case
+console.log(combinationSum([2, 3, 6, 7], 7)); // Normal Case
+console.log(combinationSum([2, 3, 4, 5], 7)); //[3,4], [2,5] Normal Case
 // console.log(combinationSum([2, 4], 7)); // Edge Case: No valid combinations
 
 // 4. Word Search (Medium)
