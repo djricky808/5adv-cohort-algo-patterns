@@ -12,18 +12,21 @@ function findContentChildren(g, s) {
     //If there are no children, or no cookies to give, return 0.
     return childrenSatisfied;
   }
-  g.sort((a, b) => b - a);
-  s.sort((a, b) => a - b);
+  g.sort((a, b) => b - a); //sort children from most greedy to least greedy
+  s.sort((a, b) => a - b); //sort cookies from smallest to largest
   console.log("children:", g);
   console.log("cookie size", s);
   for (let child of g) {
+    //The greediest child goes first, then the next greediest, and so on...
     console.log(`Child ${child}'s turn`);
     for (let i = s.length - 1; i >= 0; i--) {
+      //Pick from the largest cookie, all the way down to smallest cookie
       console.log("cookie-size, child:", s[i], child);
       if (s[i] >= child) {
-        childrenSatisfied += 1;
-        s.pop();
+        childrenSatisfied += 1; //Count the child as satisfied
+        s.pop(); //Remove the cookie, formatted to pop instead of shifting for efficiency
         console.log("Cookies after the pop", s);
+        break; //Child is fed, no more cookies for them!
       }
     }
   }
@@ -33,7 +36,7 @@ function findContentChildren(g, s) {
 // Test Cases
 // console.log(findContentChildren([1, 2, 3], [1, 1])); // 1 Normal Case
 // console.log(findContentChildren([], [1, 2, 3])); // Edge Case: No children
-console.log(findContentChildren([1, 1, 1, 2, 3], [1, 1])); // 1 Normal Case
+console.log(findContentChildren([1, 1, 1, 2, 3], [1, 3, 3, 3])); // 4 Normal Case
 
 // 2. Jump Game (Medium)
 // Problem Prompt:
