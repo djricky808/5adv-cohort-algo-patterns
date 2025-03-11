@@ -46,23 +46,37 @@ function permute(nums) {
 function combinationSum(candidates, target) {
   // Implement backtracking logic
   let combinations: number[][] = [];
-  function comboSum(index, candidates, target, combo) {
+  function comboSum(index, numbers, target, combo) {
+    console.log("index", index, "numbers", numbers.length - 1);
+    console.log("combination at index,i:", combo);
     let sum = combo.length > 0 ? combo.reduce((a, b) => a + b) : 0;
+
     if (sum === target) {
+      console.log(`${combo} matches target sum, add to combinations`);
       combinations.push(...combo);
-      return;
-    } else if (sum > target) {
-      return;
+      return; //returns if the combo adds up to the target
     }
-    for (let i = index; i < candidates.length; i++) {
-      comboSum(index + 1, candidates, target, [...combo, candidates[i]]);
+    if (sum > target) {
+      console.log(`${combo} passed target sum`);
+      return; //returns if the sum passed the target number
+    }
+    if (index === numbers.length - 1) {
+      console.log(
+        `${index} reached max length and ${combo} doesn't add to target`
+      );
+      return; //returns in index reached the end already, and passed the sum.
+    }
+
+    for (let i = index; i < numbers.length; i++) {
+      console.log("index, i:", index, i);
+      comboSum(index + 1, numbers, target, [...combo, numbers[i]]);
     }
   }
   comboSum(0, candidates, target, combinations);
   return combinations;
 }
 // // Test Cases
-console.log(combinationSum([2, 3, 6, 7], 7)); // Normal Case
+//console.log(combinationSum([2, 3, 6, 7], 7)); // Normal Case
 console.log(combinationSum([2, 3, 4, 5], 7)); //[3,4], [2,5] Normal Case
 // console.log(combinationSum([2, 4], 7)); // Edge Case: No valid combinations
 
