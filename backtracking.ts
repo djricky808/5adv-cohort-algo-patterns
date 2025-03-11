@@ -53,8 +53,10 @@ function combinationSum(candidates, target) {
 
     if (sum === target) {
       console.log(`${combo} matches target sum, add to combinations`);
-      combinations.push(...combo);
-      return; //returns if the combo adds up to the target
+      combinations.push(combo);
+      combo = [];
+      index--;
+      //return; //returns if the combo adds up to the target
     }
     if (sum > target) {
       console.log(`${combo} passed target sum`);
@@ -68,7 +70,7 @@ function combinationSum(candidates, target) {
     }
 
     for (let i = index; i < numbers.length; i++) {
-      console.log("index, i:", index, i);
+      console.log("index, i: combo", index, i, combo);
       comboSum(index + 1, numbers, target, [...combo, numbers[i]]);
     }
   }
