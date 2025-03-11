@@ -17,11 +17,13 @@ function findContentChildren(g, s) {
   console.log("children:", g);
   console.log("cookie size", s);
   for (let child of g) {
-    for (let i = s.length; i > 0; i--) {
-      console.log("cookie-size, child:", s, child);
+    console.log(`Child ${child}'s turn`);
+    for (let i = s.length - 1; i >= 0; i--) {
+      console.log("cookie-size, child:", s[i], child);
       if (s[i] >= child) {
         childrenSatisfied += 1;
         s.pop();
+        console.log("Cookies after the pop", s);
       }
     }
   }
@@ -29,8 +31,9 @@ function findContentChildren(g, s) {
 }
 
 // Test Cases
-console.log(findContentChildren([1, 2, 3], [1, 1])); // 1 Normal Case
-console.log(findContentChildren([], [1, 2, 3])); // Edge Case: No children
+// console.log(findContentChildren([1, 2, 3], [1, 1])); // 1 Normal Case
+// console.log(findContentChildren([], [1, 2, 3])); // Edge Case: No children
+console.log(findContentChildren([1, 1, 1, 2, 3], [1, 1])); // 1 Normal Case
 
 // 2. Jump Game (Medium)
 // Problem Prompt:
