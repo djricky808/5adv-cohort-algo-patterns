@@ -56,7 +56,7 @@ function combinationSum(candidates, target) {
       combinations.push(combo);
       combo = [];
       index--;
-      //return; //returns if the combo adds up to the target
+      return; //returns if the combo adds up to the target
     }
     if (sum > target) {
       console.log(`${combo} passed target sum`);
@@ -79,7 +79,8 @@ function combinationSum(candidates, target) {
 }
 // // Test Cases
 //console.log(combinationSum([2, 3, 6, 7], 7)); // Normal Case
-console.log(combinationSum([2, 3, 4, 5], 7)); //[3,4], [2,5] Normal Case
+//console.log(combinationSum([2, 3, 4, 5], 7)); //[3,4], [2,5] Normal Case
+console.log(combinationSum([1, 2, 3, 4, 5, 6, 7], 7)); //[3,4], [2,5] Normal Case
 // console.log(combinationSum([2, 4], 7)); // Edge Case: No valid combinations
 
 // 4. Word Search (Medium)

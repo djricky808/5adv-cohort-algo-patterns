@@ -7,10 +7,29 @@
 
 function findContentChildren(g, s) {
   // Implement greedy logic
+  let childrenSatisfied = 0;
+  if (g.length === 0 || s.length === 0) {
+    //If there are no children, or no cookies to give, return 0.
+    return childrenSatisfied;
+  }
+  g.sort((a, b) => b - a);
+  s.sort((a, b) => a - b);
+  console.log("children:", g);
+  console.log("cookie size", s);
+  for (let child of g) {
+    for (let i = s.length; i > 0; i--) {
+      console.log("cookie-size, child:", s, child);
+      if (s[i] >= child) {
+        childrenSatisfied += 1;
+        s.pop();
+      }
+    }
+  }
+  return childrenSatisfied;
 }
 
 // Test Cases
-console.log(findContentChildren([1, 2, 3], [1, 1])); // Normal Case
+console.log(findContentChildren([1, 2, 3], [1, 1])); // 1 Normal Case
 console.log(findContentChildren([], [1, 2, 3])); // Edge Case: No children
 
 // 2. Jump Game (Medium)
@@ -24,8 +43,8 @@ function canJump(nums) {
 }
 
 // Test Cases
-console.log(canJump([2, 3, 1, 1, 4])); // Normal Case: Can reach the last index
-console.log(canJump([3, 2, 1, 0, 4])); // Edge Case: Cannot reach last index
+// console.log(canJump([2, 3, 1, 1, 4])); // Normal Case: Can reach the last index
+// console.log(canJump([3, 2, 1, 0, 4])); // Edge Case: Cannot reach last index
 
 // 3. Task Scheduler (Medium)
 // Problem Prompt:
@@ -39,8 +58,8 @@ function leastInterval(tasks, n) {
 }
 
 // Test Cases
-console.log(leastInterval(["A", "A", "A", "B", "B", "B"], 2)); // Normal Case
-console.log(leastInterval(["A", "B", "C", "D"], 0)); // Edge Case: No cooldown period
+// console.log(leastInterval(["A", "A", "A", "B", "B", "B"], 2)); // Normal Case
+// console.log(leastInterval(["A", "B", "C", "D"], 0)); // Edge Case: No cooldown period
 
 // 4. Gas Station (Medium)
 // Problem Prompt:
@@ -54,5 +73,5 @@ function canCompleteCircuit(gas, cost) {
 }
 
 // Test Cases
-console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2])); // Normal Case: Possible circuit
-console.log(canCompleteCircuit([2, 3, 4], [3, 4, 3])); // Edge Case: No possible circuit
+// console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2])); // Normal Case: Possible circuit
+// console.log(canCompleteCircuit([2, 3, 4], [3, 4, 3])); // Edge Case: No possible circuit
